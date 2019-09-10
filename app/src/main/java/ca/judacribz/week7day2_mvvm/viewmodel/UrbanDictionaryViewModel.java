@@ -1,6 +1,7 @@
 package ca.judacribz.week7day2_mvvm.viewmodel;
 
 import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 
 import androidx.databinding.Bindable;
@@ -11,8 +12,11 @@ import androidx.lifecycle.ViewModel;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
+import ca.judacribz.week7day2_mvvm.R;
 import ca.judacribz.week7day2_mvvm.model.datasource.remote.retrofit.UrbanDictionaryHelper;
 import ca.judacribz.week7day2_mvvm.model.datasource.remote.retrofit.UrbanDictionaryObserver;
 import ca.judacribz.week7day2_mvvm.model.urbandictionary.Definition;
@@ -73,6 +77,27 @@ public class UrbanDictionaryViewModel extends ViewModel implements Observable, U
         }
     }
 
+    public void onSort(View view) {
+        final List<Definition> definitions = definitionsLiveData.getValue();
+
+        if (definitions != null) {
+            DefinitionThumbsComparator definitionThumbsComparator = null;
+            switch (view.getId()) {
+                case R.id.ibtnThumbsUp:
+                    definitionThumbsComparator = new DefinitionThumbsComparator(true);
+                    break;
+                case R.id.ibtnThumbsDown:
+                    definitionThumbsComparator = new DefinitionThumbsComparator(false);
+                    break;
+            }
+
+            if (definitionThumbsComparator != null) {
+                Collections.sort(definitions, definitionThumbsComparator);
+                definitionsLiveData.setValue(definitions);
+            }
+        }
+    }
+
     public MutableLiveData<List<Definition>> getDefinitionsLiveData() {
         return definitionsLiveData;
     }
@@ -89,5 +114,23 @@ public class UrbanDictionaryViewModel extends ViewModel implements Observable, U
     @Override
     public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
         propertyChangeRegistry.remove(callback);
+    }
+
+
+    class DefinitionThumbsComparator implements Comparator<Definition> {
+        private boolean sortByThumbsUp;
+
+         DefinitionThumbsComparator(boolean sortByThumbsUp) {
+            this.sortByThumbsUp = sortByThumbsUp;
+        }
+
+        @Override
+        public int compare(Definition d1, Definition d2) {
+            return Integer.compare(getThumbs(d2), getThumbs(d1));
+        }
+
+        private int getThumbs(Definition def) {
+             return sortByThumbsUp ? def.getThumbsUp() : def.getThumbsDown();
+        }
     }
 }

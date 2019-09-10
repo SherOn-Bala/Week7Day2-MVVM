@@ -17,6 +17,32 @@
         android:padding="@dimen/padding">
 
         <ImageButton
+            android:id="@+id/ibtnThumbsDown"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
+            android:contentDescription="@string/cnt_search_image"
+            android:onClick="@{(v) -> viewmodel.onSort(v)}"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_thumb_down"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageButton
+            android:id="@+id/ibtnThumbsUp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
+            android:contentDescription="@string/cnt_search_image"
+            android:onClick="@{(v) -> viewmodel.onSort(v)}"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_thumb_up"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ibtnThumbsDown" />
+
+        <ImageButton
             android:id="@+id/ibtnSearch"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -27,7 +53,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/ic_search"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toStartOf="@id/ibtnThumbsUp" />
 
         <EditText
             android:id="@+id/etSearch"
