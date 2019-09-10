@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import ca.judacribz.week7day2_mvvm.R
 import ca.judacribz.week7day2_mvvm.model.urbandictionary.Definition
 import ca.judacribz.week7day2_mvvm.view.adapters.WordAdapter.WordHolder
-import kotlinx.android.synthetic.main.definition.view.*
+import kotlinx.android.synthetic.main.item_definition.view.*
 
 class WordAdapter(private val definitions: List<Definition>?) : Adapter<WordHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordHolder {
         return WordHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.definition,
+                R.layout.item_definition,
                 parent,
                 false
             )
