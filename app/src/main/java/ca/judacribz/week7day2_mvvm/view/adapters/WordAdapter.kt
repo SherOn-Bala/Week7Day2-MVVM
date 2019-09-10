@@ -37,10 +37,12 @@ class WordAdapter(private val definitions: List<Definition>?) : Adapter<WordHold
             if (definition != null) {
                 itemView.tvRank.text = when (definition.rank) {
                     1 -> itemView.context.getString(R.string.top_definition)
-                    else -> (position).toString()
+                    else -> (definition.rank).toString()
                 }
                 itemView.tvWord.text = definition.word
                 itemView.tvDefinition.text = definition.definition
+                itemView.btnThumbsUp.text = definition.thumbsUp.toString()
+                itemView.btnThumbsDown.text = definition.thumbsDown.toString()
             }
         }
     }

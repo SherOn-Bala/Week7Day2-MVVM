@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin"
             android:background="@color/indexBackground"
+            android:fontFamily="@font/source_sans_pro_bold"
             android:textColor="@color/indexColor"
             android:textSize="@dimen/index"
             android:textStyle="bold"
@@ -39,8 +40,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
+            android:layout_marginBottom="@dimen/margin"
             android:textColor="@color/paragraphColor"
             android:textSize="@dimen/paragraph"
             app:layout_constraintTop_toBottomOf="@id/tvWord" />
+
+        <Button
+            android:id="@+id/btnThumbsUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:background="@drawable/thumbs_up"
+            android:textSize="@dimen/index"
+            android:drawableStart="@drawable/ic_thumb_up"
+            android:padding="@dimen/padding"
+            android:text="@string/_99"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDefinition" />
+
+        <Button
+            android:id="@+id/btnThumbsDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:textSize="@dimen/index"
+            android:background="@drawable/thumbs_down"
+            android:drawableStart="@drawable/ic_thumb_down"
+            android:padding="@dimen/padding"
+            android:text="@string/_99"
+            app:layout_constraintStart_toEndOf="@id/btnThumbsUp"
+            app:layout_constraintTop_toBottomOf="@id/tvDefinition" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
