@@ -7,18 +7,19 @@ import androidx.lifecycle.Observer
 import ca.judacribz.week7day2_mvvm.R
 import ca.judacribz.week7day2_mvvm.databinding.ActivityMainBinding
 import ca.judacribz.week7day2_mvvm.model.urbandictionary.Definition
-import ca.judacribz.week7day2_mvvm.model.urbandictionary.Word
 import ca.judacribz.week7day2_mvvm.viewmodel.UrbanDictionaryViewModel
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val activityMainBinding : ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val activityMainBinding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
         val urbanDictionaryViewModel = UrbanDictionaryViewModel()
         activityMainBinding.viewmodel = urbanDictionaryViewModel
 
-        urbanDictionaryViewModel.definitionsLiveData.observe(this,
+        urbanDictionaryViewModel.getDefinitionsLiveData().observe(
+            this,
             Observer<List<Definition>>(urbanDictionaryViewModel::setAdapter)
         )
     }
