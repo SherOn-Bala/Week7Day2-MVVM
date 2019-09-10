@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1D2439</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="indexBackground">#EFFF00</color>
+    <color name="indexColor">#333333</color>
+    <color name="subtitleColor">#134FE6</color>
+    <color name="paragraphColor">#2C353C</color>
+</resources>
